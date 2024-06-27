@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive card details form</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+    @import  -->
+    <style>
+       
+        .inputbox {
+            margin-top: 20px;
+        }
+
+        .inputbox span {
+            display: block;
+            color: black;
+            padding-bottom: 5px;
+        }
+
+        .inputbox input,
+        .inputbox select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 0, 0, .3);
+            color: black;
+        }
+
+        .flexbox {
+            display: flex;
+            gap: 15px;
+        }
+
+        .flexbox .inputbox {
+            flex: 1 1 150px;
+        }
+
+        .submit-btn ,.con-btn{
+            width: 100%;
+            background: linear-gradient(45deg, blueviolet, deeppink);
+            margin-top: 20px;
+            padding: 10px;
+            font-size: 20px;
+            color: #fff;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: .2s linear;
+        }
+
+        .submit-btn:hover {
+            letter-spacing: 2px;
+            opacity: .8;
+        }
+
+        .-btn:hover {
+            letter-spacing: 2px;
+            opacity: .8;
+        }
+  
+
+.inputbox input,
+.inputbox select {
+    width: 100%; 
+}
+
+.inputbox:nth-child(2),
+.inputbox:nth-child(1) {
+    flex: 3; 
+}
+
+.inputbox {
+    margin-bottom: 20px; 
+}
+
+.flexbox {
+    display: flex;
+    justify-content: space-between; 
+}
+
+.inputbox:nth-child(3) {
+    flex: 1; 
+}
+
+.inputbox:nth-child(3) input,
+.inputbox:nth-child(3) select {
+    width: 100px; 
+}
+
+.inputbox:nth-child(4) input {
+    width: 100px; 
+}
+
+
+.inputbox input,
+.inputbox select {
+    width: 100%;
+}
+
+.inputbox:nth-child(2),
+.inputbox:nth-child(1) {
+    flex: 1;
+}
+
+    </style>
+</head>
+
+<body>
+    <!-- CreditCards -->
+    <div class="credit-card-container">
+        <div class="card-front">
+          <img src="images\bg-card-front.png" alt="Credit Card Front" class="credit-card-image">
+          <div class="credit-card-info">
+            <p class="cardholder-name">JANE APPLESEED</p>
+           
+            <p class="card-number-box">0000 0000 0000 0000</p>
+          
+            <p class="exp-date">00/00</p>
+          </div>
+          <div class="circle circle-1"></div>
+          <div class="circle circle-2"></div>
+        </div>
+        </div>
+        <div class="card-back">
+          <img src="images\bg-card-back.png" alt="Credit Card Back" class="credit-card-image">
+          <div class="credit-card-info">
+            <p class="cvc">000</p>
+          </div>
+        </div>
+      
+<!-- The Form Body -->
+ <div class="container">
+    <div class="flex-container">
+        <div class="form-container">
+            <div class="flexbox">
+             
+                <form id="card-form">
+                    
+                    <div class="inputbox">
+                        <span>CardHolder Name</span>
+                        <input type="text" placeholder="e.g. Jane Appleseed" maxlength="32" class="cardholdername-input" width="30">
+                        <p id="nameError" style="color: hsl(0, 100%, 66%); display: none;">Invalid Name!Name should not contain numbers</p>
+                    </div>
+                    <div class="inputbox">
+                        <span>Card Number</span>
+                        <input type="text" placeholder="e.g. 1234 5678 9123 0000" maxlength="19" class="cardnumber-input">
+                        <p id="cardNumberError" style="color:  hsl(0, 100%, 66%); display: none;">Invalid card number!Number shouldn't Contain Characters</p>
+                    </div>
+                    
+                    <span>Exp.Date(MM/YY) </span>
+                        <span style="margin-right:220px;"></span>
+                        <span>CVC</span>
+                    <div class="flexbox">
+                        <div class="inputbox">
+                            <input type="text" placeholder="MM" maxlength="2" class="month-input" onblur="validateMonth(this)" />
+                            <p class="alert-message" id="month-alert" style="display: none; color: hsl(0, 100%, 66%);">Invalid month</p>
+                        </div>
+                        <div class="inputbox">
+                            <input type="text" placeholder="YY" maxlength="4" class="year-input" onblur="validateYear(this)">
+                            <p class="alert-message" id="year-alert" style="display: none; color:  hsl(0, 100%, 66%);">Invalid year</p>
+                        </div>
+                        <div class="inputbox">
+                            <input type="text" placeholder="e.g.123" maxlength="3" class="cvv-input" onblur="validateCVV(this)">
+                            <p class="alert-message" id="cvv-alert" style="display: none;color: hsl(0, 100%, 66%) ;">Invalid CVC</p>
+                        </div>
+                    </div>
+                    <button type="submit" class="submit-btn">Confirm</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Confirmation Container -->
+    <div class="confirmation-container" >
+        <img src="images\icon-complete.svg">
+      <h2>Thank you!</h2>
+      <br>
+      <h3 style="color: #ccc;">We've Added Your Card Details</h3>
+      <br>
+      <input type="button" value="Continue" class="con-btn" onclick="continueShopping()"  />
+    </div>
+
+
+</body>
+
+<script src="script.js"></script>
+
+</html>
+
